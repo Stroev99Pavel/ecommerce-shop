@@ -1,0 +1,16 @@
+<h2 class="text-2xl font-bold mb-4">Товары</h2>
+
+<div *ngIf="products$ | async as products">
+  <div *ngIf="products.length > 0; else noProducts">
+    <ul class="space-y-4">
+      <li *ngFor="let product of products" class="border p-4 rounded shadow">
+        <strong>{{ product.name }}</strong><br>
+        <span>{{ product.price | number:'1.0-0' }} ₸</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<ng-template #noProducts>
+  <p>Нет товаров в этой категории.</p>
+</ng-template>
